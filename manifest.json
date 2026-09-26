@@ -1,0 +1,22 @@
+{
+  "manifest_version": 3,
+  "name": "SMS Draggable Clock",
+  "version": "1.0",
+  "description": "A persistent draggable live clock overlay on every webpage.",
+  "permissions": [
+    "storage"
+  ],
+  "action": {
+    "default_popup": "popup.html",
+    "default_title": "SMS Draggable Clock",
+    "default_icon":"favicon.png"
+  },
+  "content_scripts": [
+    {
+      "matches": ["<all_urls>"],
+      "js": ["popup.js"],
+      "css": ["styles.css"],
+      "run_at": "document_end"
+    }
+  ]
+}
