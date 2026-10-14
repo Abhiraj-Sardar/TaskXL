@@ -1,16 +1,16 @@
 <a href="" target="_blank" rel="noopener">
   <picture>
-    <source media="(prefers-color-scheme: dark)" alt="CON-KAN" srcset="https://github.com/Abhiraj-Sardar/CON-KAN/blob/master/Resources/Logo-Banner.png" />
-    <img alt="CON-KAN" src="https://github.com/Abhiraj-Sardar/CON-KAN/blob/master/Resources/Logo-Banner.png" />
+    <source media="(prefers-color-scheme: dark)" alt="TaskXL" srcset="https://github.com/Abhiraj-Sardar/TaskXL/blob/master/Output/TaskXL-Logo.png" />
+    <img alt="TaskXL" src="https://github.com/Abhiraj-Sardar/TaskXL/blob/master/Output/TaskXL-Logo.png" />
   </picture>
 </a>
 
 <h4 align="center">
-  <a href="https://excalidraw.com">TaskXl</a> |
-  <a href="https://docs.excalidraw.com">Clone</a> |
-  <a href="https://plus.excalidraw.com/blog">Star ⭐</a> |
-  <a href="https://plus.excalidraw.com">Fork</a> |
-  <a href="https://plus.excalidraw.com">Contribute</a>
+  <a href="https://github.com/Abhiraj-Sardar/TaskXL">TaskXl</a> |
+  <a href="https://github.com/Abhiraj-Sardar/TaskXL">Clone</a> |
+  <a href="https://github.com/Abhiraj-Sardar/TaskXL">Star ⭐</a> |
+  <a href="https://github.com/Abhiraj-Sardar/TaskXL">Fork</a> |
+  <a href="https://github.com/Abhiraj-Sardar/TaskXL">Contribute</a>
 </h4>
 
 <div align="center">
@@ -34,6 +34,10 @@ It also has a Live Clock. with future scope of different version of this extensi
 
 ## User Interaction Diagram
 
+<picture>
+    <source media="(prefers-color-scheme: dark)" alt="TaskXL" srcset="https://github.com/Abhiraj-Sardar/TaskXL/blob/master/Output/TaskXL-UML.png" />
+    <img alt="TaskXL" src="https://github.com/Abhiraj-Sardar/TaskXL/blob/master/Output/TaskXL-UML.png" />
+  </picture>
 
 
 ## How to use it in Chrome ?
@@ -58,3 +62,8 @@ It also has a Live Clock. with future scope of different version of this extensi
 ```
 
 ## Software Anatomy
+
+<picture>
+    <source media="(prefers-color-scheme: dark)" alt="TaskXL" srcset="https://github.com/Abhiraj-Sardar/TaskXL/blob/master/Output/TaskXL.png" />
+    <img alt="TaskXL" src="https://github.com/Abhiraj-Sardar/TaskXL/blob/master/Output/TaskXL.png" />
+</picture>
