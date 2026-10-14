@@ -1,0 +1,22 @@
+{
+  "manifest_version": 3,
+  "name": "TaskXL",
+  "version": "1.0",
+  "description": "A persistent draggable live clock to manage and track your Office Time.",
+  "permissions": [
+    "storage"
+  ],
+  "action": {
+    "default_popup": "popup.html",
+    "default_title": "SMS Draggable Clock",
+    "default_icon":"favicon.png"
+  },
+  "content_scripts": [
+    {
+      "matches": ["<all_urls>"],
+      "js": ["popup.js"],
+      "css": ["styles.css"],
+      "run_at": "document_end"
+    }
+  ]
+}

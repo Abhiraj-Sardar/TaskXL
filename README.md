@@ -1,2 +1,0 @@
-# TaskXL
-A Chrome Extension 

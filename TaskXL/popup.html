@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>TaskXL</title>
+    <link href="" rel="stylesheet"/>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      body {
+        width: 280px;
+        font-family: Arial, sans-serif;
+        background: #f4f6f9;
+        border-radius: 12px;
+        overflow: hidden;
+      }
+
+      /* ── Header ── */
+      .popup-header {
+        background: #003366;
+        color: #ffffff;
+        padding: 10px 16px;
+        text-align: center;
+      }
+
+      .popup-header h1 {
+        font-size: 15px;
+        font-weight: bold;
+        letter-spacing: 0.5px;
+      }
+
+      .popup-header p {
+        font-size: 11px;
+        opacity: 0.75;
+        margin-top: 2px;
+      }
+
+      /* ── Clock Display ── */
+      .clock-section {
+        background: #ffffff;
+        text-align: center;
+        padding: 20px 16px 14px;
+        border-bottom: 1px solid #e8e8e8;
+      }
+
+      #popup-time {
+        font-size: 42px;
+        font-weight: bold;
+        color: #003366;
+        letter-spacing: 3px;
+        font-variant-numeric: tabular-nums;
+      }
+
+      #popup-date {
+        font-size: 13px;
+        color: #777777;
+        margin-top: 6px;
+      }
+
+      #popup-timezone {
+        font-size: 11px;
+        color: #aaaaaa;
+        margin-top: 4px;
+      }
+
+      /* ── Controls ── */
+      .controls-section {
+        padding: 12px 16px;
+        background: #ffffff;
+        border-bottom: 1px solid #e8e8e8;
+      }
+
+      .controls-section label {
+        font-size: 12px;
+        color: #444;
+        font-weight: bold;
+        display: block;
+        margin-bottom: 8px;
+      }
+
+      .btn-row {
+        display: flex;
+        gap: 8px;
+      }
+
+      .btn {
+        flex: 1;
+        padding: 7px 0;
+        border: none;
+        border-radius: 6px;
+        cursor: pointer;
+        font-size: 12px;
+        font-weight: bold;
+        transition: background 0.2s;
+      }
+
+      .btn-primary {
+        background: #003366;
+        color: #ffffff;
+      }
+
+      .btn-primary:hover {
+        background: #0055aa;
+      }
+
+      .btn-secondary {
+        background: #e8edf2;
+        color: #003366;
+      }
+
+      .btn-secondary:hover {
+        background: #d0d8e4;
+      }
+
+      .btn-active {
+        background: #0055aa;
+        color: #ffffff;
+      }
+
+      /* ── Status ── */
+      .status-section {
+        padding: 10px 16px;
+        background: #dee5f1;
+        height:10rem;
+      }
+
+      .display-checkIn {
+        padding: 12px 16px;
+        background: #def1e1;
+        height:6.5rem;
+      }
+
+      .status-row {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        font-size: 12px;
+        color: #555;
+        padding: 3px 0;
+      }
+
+      .status-dot-green {
+        width: 8px;
+        height: 8px;
+        border-radius: 50%;
+        background: #2a9d2a;
+        display: inline-block;
+        margin-right: 6px;
+      }
+
+      .status-dot-red {
+        width: 8px;
+        height: 8px;
+        border-radius: 50%;
+        background: #ef0707;
+        display: inline-block;
+        margin-right: 6px;
+      }
+
+      .status-dot-yellow {
+        width: 8px;
+        height: 8px;
+        border-radius: 50%;
+        background: #f2ff00;
+        display: inline-block;
+        margin-right: 6px;
+      }
+
+      .status-dot-blue {
+        width: 8px;
+        height: 8px;
+        border-radius: 50%;
+        background: #1509fb;
+        display: inline-block;
+        margin-right: 6px;
+      }
+
+      /* ── Footer ── */
+      .popup-footer {
+        background: #003366;
+        text-align: center;
+        padding: 8px;
+        font-size: 12px;
+        color: rgba(255,255,255,0.6);
+      }
+
+      input::placeholder{
+        text-align: center;
+      }
+    </style>
+  </head>
+  <body>
+
+    <!-- Header -->
+    <div class="popup-header">
+      <h1>⏱ TaskXL</h1>
+      <p>Manage And Track Your Professional Time</p>
+    </div>
+
+    <!-- Clock Display -->
+    <div class="clock-section">
+      <div id="popup-time">00:00:00</div>
+      <div id="popup-date">Loading...</div>
+      <div id="popup-timezone">Version v1.0 (Beta)</div>
+    </div>
+
+    <div class="controls-section">
+      <label>Check In - Check Out </label>
+      <div class="btn-row">
+        <input id="timeTxt" type="text" placeholder="00:00" style="width:40%;"/>
+        <button class="btn btn-secondary" id="setCheckInbtn">Check In</button>
+        <button class="btn btn-secondary" id="setCheckOutbtn">Check Out</button>
+      </div>
+    </div>
+
+    <!-- Status -->
+    <div class="status-section">
+      <div class="status-row">
+        <span style="color: #2924bf; font-weight: bold;"><span class="status-dot-green"></span>Day</span>
+        <span style="color: #2924bf; font-weight: bold;">Times Spent</span>
+      </div>
+      
+      <div class="status-row">
+        <span>Monday</span>
+        <span id="status-format-mon" style="font-weight: bold;"><progress id="Monday" value="0" max="100"></progress></span>
+      </div>
+
+      <div class="status-row">
+        <span>Tuesday</span>
+        <span id="status-format-tue" style="font-weight: bold;"><progress id="Tuesday" value="0" max="100"></progress></span>
+      </div>
+
+      <div class="status-row">
+        <span>Wednesday</span>
+        <span id="status-format-wed" style="font-weight: bold;"><progress id="Wednesday" value="0" max="100"></progress></span>
+      </div>
+
+      <div class="status-row">
+        <span>Thursday</span>
+        <span id="status-format-thu" style="font-weight: bold;"><progress id="Thursday" value="0" max="100"></progress></span>
+      </div>
+
+      <div class="status-row">
+        <span>Friday</span>
+        <span id="status-format-fri" style="font-weight: bold;"><progress id="Friday" value="0"  max="100"></progress></span>
+      </div>
+    </div>
+
+    <div class="display-checkIn">
+       <div class="status-row">
+        <span><span class="status-dot-green"></span>Check In</span>
+        <span id="status-format-checkIn" style="font-weight: bold;">Null</span>
+      </div>
+
+      <div class="status-row">
+        <span><span class="status-dot-red"></span>Check Out</span>
+        <span id="status-format-checkOut" style="font-weight: bold;">Null</span>
+      </div>
+
+      <div class="status-row">
+        <span><span class="status-dot-yellow"></span>Saved Time (Today)</span>
+        <span id="status-format-extra-time" style="font-weight: bold;">0</span>
+      </div>
+
+      <div class="status-row">
+        <span><span class="status-dot-blue"></span>Buffer Time</span>
+        <span id="status-format-buffer-time" style="font-weight: bold;">0 min</span>
+      </div>
+
+    </div>
+
+    <div class="controls-section">
+      <div class="btn-row">
+        <button class="btn btn-secondary" id="flushBtn"> 🧹 Flush Buffer Time</button>
+      </div>
+    </div>
+    <!-- Footer -->
+    <div class="popup-footer">
+      Made with 🍵 by Abhiraj Sardar
+    </div>
+
+    <script src="./popup.js" defer></script>
+  </body>
+</html>
